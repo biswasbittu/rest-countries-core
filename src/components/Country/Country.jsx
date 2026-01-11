@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-const Country = ({ countrys }) => {
+const Country = ({ countrys,handleVisitedCountry }) => {
     // console.log(countrys)
     const { country, countryInfo, continent, population } = countrys;
     const [visited, setVisited] = useState(false)
     const handleVisited = () => {
         // console.log('visited btn clicked')
         setVisited(!visited)
-        
+        handleVisitedCountry(countrys)
     }
     return (
         <div className=' mt-16'>
