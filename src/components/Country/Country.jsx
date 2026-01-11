@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Country = ({ countrys,handleVisitedCountry }) => {
+const Country = ({ countrys,handleVisitedCountry,handleVisitedFlag, }) => {
     // console.log(countrys)
     const { country, countryInfo, continent, population } = countrys;
     const [visited, setVisited] = useState(false)
@@ -8,6 +8,7 @@ const Country = ({ countrys,handleVisitedCountry }) => {
         // console.log('visited btn clicked')
         setVisited(!visited)
         handleVisitedCountry(countrys)
+        
     }
     return (
         <div className=' mt-16'>
@@ -25,8 +26,11 @@ const Country = ({ countrys,handleVisitedCountry }) => {
                     <p>{population}</p>
                     <div className="card-actions justify-start">
                         <button onClick={() => handleVisited()}
-                            className={`btn ${visited ? "btn- btn-secondary" : 'btn-primary'}`}>{visited ? "Visited" : 'Not Visited'}</button>
+                            className={`btn ${visited ? "hidden" : 'btn btn-primary'}`}>{visited ? "" : 'Not Visited'}</button>
+                            <button onClick={() => handleVisitedFlag(countryInfo.flag,)}
+                            className={`${visited?'btn btn-primary':'hidden'} `}>Visited Flag</button>
                     </div>
+                    
                 </div>
             </div>
             {visited && (
